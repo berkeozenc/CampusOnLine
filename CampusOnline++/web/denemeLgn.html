@@ -1,0 +1,36 @@
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+     
+       xmlns:h="http://java.sun.com/jsf/html"  
+    xmlns:f="http://java.sun.com/jsf/core"  
+    xmlns:p="http://primefaces.org/ui"
+      >
+
+
+
+
+    <h:head>
+        <title>COL++ Login</title>
+        <style src="stylesheet.css" type="text/css"  />
+        <script src="primefaces-5.3.jar" />    
+        
+    </h:head>
+    <h:body>
+        <p:accordionPanel>
+<p:tab title="First Tab Title">
+<h:outputText value= "Lorem"/>
+...More content for first tab
+</p:tab>
+<p:tab title="Second Tab Title">
+<h:outputText value="Ipsum" />
+</p:tab>
+//any number of tabs
+</p:accordionPanel>
+
+        <form name="loginForm" method="post" action="login">
+    Username: <input type="text" name="username"/> <br/>
+    Password: <input type="password" name="password"/> <br/>
+    <input type="submit" value="Login" />
+</form>
+    </h:body>
+</html>  
