@@ -19,13 +19,14 @@ public class Course {
     public String name;
     public int credit;
     public int deptID;
-    public boolean isConsent;
+    public int isConsent;
+    public int quota;
     public ArrayList <Section> sections ;
     public ArrayList <String> prerequisites;
     public ArrayList <CourseAndDept> courseTypesForDepts;
     
 
-    public Course(String code, String name, int credit, int deptID, boolean isConsent) {
+    public Course(String code, String name, int credit, int deptID, int isConsent, int quota) {
         this.code = code;
         this.name = name;
         this.credit = credit;
@@ -33,6 +34,7 @@ public class Course {
         this.isConsent = isConsent;
         this.sections=new ArrayList();
         this.prerequisites=new ArrayList();
+        this.quota=quota;
         courseTypesForDepts = new ArrayList<CourseAndDept>();
     }
     

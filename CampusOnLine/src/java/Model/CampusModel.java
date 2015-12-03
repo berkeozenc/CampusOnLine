@@ -132,11 +132,18 @@ public class CampusModel {
             com.mysql.jdbc.Statement st3 = (com.mysql.jdbc.Statement) c.createStatement();
             ResultSet rs = st.executeQuery("SELECT * FROM course");
             while(rs.next()){
+                int isConsent=0;
+               
+                if(rs.getBoolean("isConsent")){
+                    isConsent=1;
+                }
+                
                 Course c = new Course(rs.getString("code"),
                                        rs.getString("name"),
                                        rs.getInt("credit"),
                                        rs.getInt("department_id"),
-                                       rs.getBoolean("isConsent")
+                                       isConsent,
+                                       rs.getInt("quota")
                                       );
                 allCourse.add(c);
                 ResultSet rs2 = st1.executeQuery("SELECT prerequisite_code FROM prerequisite WHERE course_code='"+rs.getString("code")+"'");
@@ -214,6 +221,31 @@ public class CampusModel {
             Logger.getLogger(CampusModel.class.getName()).log(Level.SEVERE, null, ex);
         }
         return depts;
+    }
+    
+     public boolean addCourse(Course C){
+        try {
+            Statement st = (Statement) c.createStatement();
+            st.execute("INSERT INTO course (code,name,credit,department_id,isConsent,quota) VALUES('"+C.code+"', '"+C.name+"', "+C.credit+", "+C.deptID+"," +C.isConsent+","+C.quota+" )");
+            return true;
+        } catch (SQLException ex) {
+            ex.getStackTrace();
+        }
+        return false;
+    }
+     public ArrayList<Course> getAllCourses(){
+        ArrayList <Course> courses = new ArrayList<Course>();
+        try {
+            Statement st = (Statement) c.createStatement();
+            ResultSet rs = st.executeQuery("SELECT * FROM course");
+            
+            while(rs.next()){
+                courses.add(new Course(rs.getString("code"),rs.getString("name"),rs.getInt("credit"),rs.getInt("department_id"),rs.getInt("isConsent"),rs.getInt("quota")));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(CampusModel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return courses;
     }
     
 }

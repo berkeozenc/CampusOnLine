@@ -61,7 +61,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand page-scroll" href="#page-top">Main Page</a>
+                <a class="navbar-brand page-scroll" href="adminHome.jsp">Main Page</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -91,7 +91,7 @@
         Manage Courses<b class="caret"></b>
     </a>
     <ul class="dropdown-menu">
-        <li><a tabindex="-1" href="#">Add Course</a></li>
+        <li><a tabindex="-1" href="addCourse.jsp">Add Course</a></li>
         <li class="divider"></li>
         <li><a tabindex="-1" href="#">Edit/Delete Course</a></li>
         <li class="divider"></li>
@@ -108,7 +108,7 @@
         Manage Instructors<b class="caret"></b>
     </a>
     <ul class="dropdown-menu">
-        <li><a tabindex="-1" href="#">Add Instructor</a></li>
+        <li><a tabindex="-1" href="addInstructor.jsp">Add Instructor</a></li>
         <li class="divider"></li>
         <li><a tabindex="-1" href="#">Edit/Delete Instructor</a></li>
         
@@ -124,7 +124,7 @@
         Manage Students<b class="caret"></b>
     </a>
     <ul class="dropdown-menu">
-        <li><a tabindex="-1" href="#">Add Student</a></li>
+        <li><a tabindex="-1" href="addStudent.jsp">Add Student</a></li>
         <li class="divider"></li>
         <li><a tabindex="-1" href="#">Edit/Delete Student</a></li>
         
@@ -136,10 +136,10 @@
                     </li>
                     
                     <li>
-                        <a class="page-scroll" href="#">Add Administrative Account</a>
+                        <a class="page-scroll" href="addAdmin.jsp">Add Administrative Account</a>
                     </li>
                       <li>
-                        <a class="page-scroll" href="#">Personal Info</a>
+                          <a class="page-scroll" href="personalInfo.jsp">Personal Info</a>
                     </li>
                      
                     <li>
@@ -158,7 +158,7 @@
                 
                 
                 <form action='addDepartment.jsp' method='post'>
-                    <table>
+                    <table align='center'>
                         <tr>
                             <td style='padding: 20px'>
                                 Department Name:</td><td><input type='text' class="form-control input-lg" name='depName' />
@@ -180,12 +180,14 @@
                             </td>
                         </tr>
                         <tr>
+                            
                             <td>
                                 &nbsp;
                             </td>
                             <td>
                                 <input type='submit' value='Add Department' class="btn btn-primary btn-lg btn-block" />
                             </td>
+                            
                         </tr>
                             
                     </table>
@@ -208,19 +210,7 @@ else{%>
         </div>
     </header>
 
-    <section class="bg-primary" id="announcements">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 text-center">
-                    <h2 class="section-heading">Announcements</h2>
-                    <hr class="light"/>
-                    <p class="text-faded">Here comes the announcements from the database based on department id of student</p>
-                    <a href="#" class="btn btn-default btn-xl">View Details Of My Announcments</a>
-                    
-                </div>
-            </div>
-        </div>
-    </section>
+    
 
    
 

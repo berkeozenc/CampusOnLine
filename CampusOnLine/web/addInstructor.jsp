@@ -1,14 +1,15 @@
 <%-- 
-    Document   : instHome
-    Created on : 30.Kas.2015, 22:20:43
-    Author     : Berke
+    Document   : addCourse
+    Created on : 03.Ara.2015, 18:41:28
+    Author     : LabTek
 --%>
 
-<%@page import="Model.Instructor"%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
-<%@ page import = "Controller.Login" %>
-<jsp:useBean id = "login" scope = "session" class= "Controller.Login"></jsp:useBean>
+
+
 <html xmlns="http://www.w3.org/1999/xhtml"
      >
 
@@ -22,7 +23,7 @@
     <meta name="description" content=""/>
     <meta name="author" content=""/>
 
-    <title>COL++ Main Page</title>
+    <title>COL++ Add Instructor</title>
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css"/>
@@ -59,7 +60,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand page-scroll" href="#page-top">Main Page</a>
+                <a class="navbar-brand page-scroll" href="adminHome.jsp">Main Page</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -73,7 +74,8 @@
         Manage Departments<b class="caret"></b>
     </a>
     <ul class="dropdown-menu">
-        <li><a tabindex="-1" href="addDepartment.jsp">Add Department</a></li>
+       
+        <li><a tabindex="-1" href="addDepartment.jsp.jsp">Add Department</a></li>
         <li class="divider"></li>
         <li><a tabindex="-1" href="editDepartment.jsp">Edit/Delete Department</a></li>
         
@@ -89,7 +91,7 @@
         Manage Courses<b class="caret"></b>
     </a>
     <ul class="dropdown-menu">
-        <li><a tabindex="-1" href="addCourse.jsp">Add Course</a></li>
+        <li><a tabindex="-1" href="#">Add Course</a></li>
         <li class="divider"></li>
         <li><a tabindex="-1" href="#">Edit/Delete Course</a></li>
         <li class="divider"></li>
@@ -106,7 +108,7 @@
         Manage Instructors<b class="caret"></b>
     </a>
     <ul class="dropdown-menu">
-        <li><a tabindex="-1" href="addInstructor.jsp">Add Instructor</a></li>
+        <li><a tabindex="-1" href="#">Add Instructor</a></li>
         <li class="divider"></li>
         <li><a tabindex="-1" href="#">Edit/Delete Instructor</a></li>
         
@@ -153,7 +155,94 @@
     <header>
         <div class="header-content">
             <div class="header-content-inner">
-                <h2>Welcome To Campus On-Line ++</h2>
+                
+                
+                <form action='addInstructor.jsp' method='post'>
+                    <table align='center'>
+                        <tr>
+                            <td style='padding: 20px'>
+                                Name:</td><td><input type='text' class="form-control input-lg" name='name' />
+                            </td>
+                            <td style='padding: 20px'>
+                                Surname:</td><td><input type='text' class="form-control input-lg" name='surname' />
+                            </td>
+                        </tr>
+                       
+                        <tr>
+                            <td style='padding: 20px'>
+                                User ID:</td><td><input type='text' class="form-control input-lg" name='userNo' />
+                            </td>
+                            <td style='padding: 20px'>
+                                Password:</td><td><input type='password' class="form-control input-lg" name='password' />
+                            </td>
+                        </tr>
+                        
+                         <tr>
+                            <td style='padding: 20px'>
+                                Address:</td><td><input type='text' class="form-control input-lg" name='address' />
+                            </td>
+                              <td style='padding: 20px'>
+                                TC Kimlik No:</td><td><input type='text' class="form-control input-lg" name='tc' />
+                            </td>
+                        </tr>
+                        
+                        
+                        
+                         <tr>
+                            <td style='padding: 20px'>
+                                Phone:</td><td><input type='text' class="form-control input-lg" name='phone' />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style='padding: 20px'>
+                                Blood Type:</td><td><input type='text' class="form-control input-lg" name='bloodType' />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style='padding: 20px'>
+                                Office:</td><td><input type='text' class="form-control input-lg" name='officeroom' />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style='padding: 20px'>
+                                Department:</td><td><select class="form-control input-lg" name="department_id"><option value="0">Select A Department</option></select>
+                            </td>
+                             <td style='padding: 20px'>
+                                Is Advisor?:</td><td><select class="form-control input-lg" name="isAdvisor"><option value="0">No</option><option value="1">Yes</option></select>
+                            </td>
+                        </tr>
+                       
+                        <tr>
+                            <td style='padding: 20px'>
+                                Is Department Admin?:</td><td><select class="form-control input-lg" name="isDeptAdmin"><option value="0">No</option><option value="1">Yes</option></select>
+                            </td>
+                             <td style='padding: 20px'>
+                                Is Quota Manager?:</td><td><select class="form-control input-lg" name="isQuotaManager"><option value="0">No</option><option value="1">Yes</option></select>
+                            </td>
+                        </tr>
+                        
+                        
+                        <tr>
+                            <td>
+                                <input type="hidden" name='status' value='4'/>
+                            </td>
+                            <td>
+                                <input type='submit' value='Add Instructor' class="btn btn-primary btn-lg btn-block" />
+                            </td>
+                        </tr>
+                            
+                    </table>
+                </form>
+                <%/*
+                    if(request.getParameter("courseCode") != null && request.getParameter("courseName") != null && request.getParameter("credit") != null && 
+                            request.getParameter("department_id") != null && request.getParameter("isConsent") != null && request.getParameter("quota") != null ){
+                       if(addCourse.add()){
+                */%>
+                    <%/*=addCourse.getCourseName()+ " başarıyla eklendi!" */%>
+                    <%/*}
+else{*/%>
+                <%/*=addCourse.getCourseName() + " eklenemedi!"*/%>
+                <%/*}}*/%>
                 <hr/>
               
                 
@@ -162,19 +251,7 @@
         </div>
     </header>
 
-    <section class="bg-primary" id="announcements">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 text-center">
-                    <h2 class="section-heading">Announcements</h2>
-                    <hr class="light"/>
-                    <p class="text-faded">Here comes the announcements from the database based on department id of student</p>
-                    <a href="#" class="btn btn-default btn-xl">View Details Of My Announcments</a>
-                    
-                </div>
-            </div>
-        </div>
-    </section>
+    
 
    
 

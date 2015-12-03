@@ -1,14 +1,16 @@
 <%-- 
-    Document   : instHome
-    Created on : 30.Kas.2015, 22:20:43
-    Author     : Berke
+    Document   : addCourse
+    Created on : 03.Ara.2015, 18:41:28
+    Author     : LabTek
 --%>
 
-<%@page import="Model.Instructor"%>
+<%@page import="Model.Department"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<jsp:useBean id = "addCourse" scope = "page" class= "Controller.CourseController"></jsp:useBean>
+<jsp:setProperty name = "addCourse" property = "*"/>
 <!DOCTYPE html>
-<%@ page import = "Controller.Login" %>
-<jsp:useBean id = "login" scope = "session" class= "Controller.Login"></jsp:useBean>
+
+
 <html xmlns="http://www.w3.org/1999/xhtml"
      >
 
@@ -22,7 +24,7 @@
     <meta name="description" content=""/>
     <meta name="author" content=""/>
 
-    <title>COL++ Main Page</title>
+    <title>COL++ Add Course</title>
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css"/>
@@ -59,7 +61,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand page-scroll" href="#page-top">Main Page</a>
+                <a class="navbar-brand page-scroll" href="adminHome.jsp">Main Page</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -73,6 +75,7 @@
         Manage Departments<b class="caret"></b>
     </a>
     <ul class="dropdown-menu">
+       
         <li><a tabindex="-1" href="addDepartment.jsp">Add Department</a></li>
         <li class="divider"></li>
         <li><a tabindex="-1" href="editDepartment.jsp">Edit/Delete Department</a></li>
@@ -89,7 +92,7 @@
         Manage Courses<b class="caret"></b>
     </a>
     <ul class="dropdown-menu">
-        <li><a tabindex="-1" href="addCourse.jsp">Add Course</a></li>
+        <li><a tabindex="-1" href="#">Add Course</a></li>
         <li class="divider"></li>
         <li><a tabindex="-1" href="#">Edit/Delete Course</a></li>
         <li class="divider"></li>
@@ -153,7 +156,69 @@
     <header>
         <div class="header-content">
             <div class="header-content-inner">
-                <h2>Welcome To Campus On-Line ++</h2>
+                
+                
+                <form action='addCourse.jsp' method='post'>
+                    <table align='center'>
+                        <tr>
+                            <td style='padding: 20px'>
+                                Course Code:</td><td><input type='text' class="form-control input-lg" name='courseCode' />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style='padding: 20px'>
+                                Course Name:</td><td><input type='text' class="form-control input-lg" name='courseName' />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style='padding: 20px'>
+                                Credit:</td><td><input type='text' class="form-control input-lg" name='credit' />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style='padding: 20px'>
+                                Department ID:</td>
+                            <td> <%addCourse.getAllDept();%>
+                                <select name='department_id' class="form-control input-lg" id='deps'  >
+                                    <option value="-1">Select A Department</option>
+                                    <%for(Department d : addCourse.getDepts()){%>
+                                    <option value='<%=d.getId()%>' 
+                                            <%if(request.getParameter("department_id") != null && Integer.parseInt(request.getParameter("department_id")) == d.getId()){%> selected <%}%> ><%=d.name%></option>
+                                    <%}%>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style='padding: 20px'>
+                                Consent:</td><td><select class="form-control input-lg" name="isConsent"><option value="0">No</option><option value="1">Yes</option></select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style='padding: 20px'>
+                                Quota:</td><td><input type='text' class="form-control input-lg" name='quota' />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                &nbsp;
+                            </td>
+                            <td>
+                                <input type='submit' value='Add Course' class="btn btn-primary btn-lg btn-block" />
+                            </td>
+                        </tr>
+                            
+                    </table>
+                </form>
+                <%
+                    if(request.getParameter("courseCode") != null && request.getParameter("courseName") != null && request.getParameter("credit") != null && 
+                            request.getParameter("department_id") != null && request.getParameter("isConsent") != null && request.getParameter("quota") != null ){
+                       if(addCourse.add()){
+                %>
+                    <%=addCourse.getCourseName()+ " başarıyla eklendi!" %>
+                    <%}
+else{%>
+                <%=addCourse.getCourseName() + " eklenemedi!"%>
+                <%}}%>
                 <hr/>
               
                 
@@ -162,19 +227,7 @@
         </div>
     </header>
 
-    <section class="bg-primary" id="announcements">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 text-center">
-                    <h2 class="section-heading">Announcements</h2>
-                    <hr class="light"/>
-                    <p class="text-faded">Here comes the announcements from the database based on department id of student</p>
-                    <a href="#" class="btn btn-default btn-xl">View Details Of My Announcments</a>
-                    
-                </div>
-            </div>
-        </div>
-    </section>
+    
 
    
 
