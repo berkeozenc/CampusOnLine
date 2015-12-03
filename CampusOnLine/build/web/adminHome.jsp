@@ -89,7 +89,7 @@
         Manage Courses<b class="caret"></b>
     </a>
     <ul class="dropdown-menu">
-        <li><a tabindex="-1" href="#">Add Course</a></li>
+        <li><a tabindex="-1" href="addCourse.jsp">Add Course</a></li>
         <li class="divider"></li>
         <li><a tabindex="-1" href="#">Edit/Delete Course</a></li>
         <li class="divider"></li>
@@ -106,7 +106,7 @@
         Manage Instructors<b class="caret"></b>
     </a>
     <ul class="dropdown-menu">
-        <li><a tabindex="-1" href="#">Add Instructor</a></li>
+        <li><a tabindex="-1" href="addInstructor.jsp">Add Instructor</a></li>
         <li class="divider"></li>
         <li><a tabindex="-1" href="#">Edit/Delete Instructor</a></li>
         
@@ -122,7 +122,7 @@
         Manage Students<b class="caret"></b>
     </a>
     <ul class="dropdown-menu">
-        <li><a tabindex="-1" href="#">Add Student</a></li>
+        <li><a tabindex="-1" href="addStudent.jsp">Add Student</a></li>
         <li class="divider"></li>
         <li><a tabindex="-1" href="#">Edit/Delete Student</a></li>
         
@@ -134,10 +134,10 @@
                     </li>
                     
                     <li>
-                        <a class="page-scroll" href="#">Add Administrative Account</a>
+                        <a class="page-scroll" href="addAdmin.jsp">Add Administrative Account</a>
                     </li>
                       <li>
-                        <a class="page-scroll" href="#">Personal Info</a>
+                          <a class="page-scroll" href="personalInfo.jsp">Personal Info</a>
                     </li>
                      
                     <li>
